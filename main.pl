@@ -20,8 +20,8 @@
 consult('variables.pl') .
 consult('functions.pl') .
 
-% call this function to start, this function initiates the counters, and
-% prints startup message
+% call this predicate to start, this function initiates the counters,
+% and prints startup message
 start() :-
     write("Welcome to the game '10 questions'! In this game, I will think of something,"),
     nl(),
@@ -57,7 +57,7 @@ start() :-
     choose_category()
  .
 
-% call this function to display answer. (debug tool)
+% call this predicate to display answer. (debug tool)
 show_answer() :-
     answer(Ans),
     nth0(0, Ans, Idx0),
@@ -79,12 +79,6 @@ all_options(X) :-
     )
     .
 
-print_list(List, Count) :-
-    nth0(Count, List, Elem),
-    write(Elem), nl(),
-    succ(Count, Incremented),
-    print_list(List, Incremented)
-    .
 
 
 

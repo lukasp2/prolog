@@ -75,15 +75,15 @@ incorrect(Guess) :-
     answer(Ans),
     nth0(0, Ans, Idx0),
     nth0(1, Ans, Idx1),
-    write("Haha, "), write(Guess), write("?? Not even close."), nl(), nl(),
-    write("The answer was '"), write(Idx0), write("', how did you not get that?"), nl(),
-    write("The attributes were "), write(Idx1), nl(), nl(),
+    write("Haha, "), write(Guess), write("?? Not even close."), nl, nl,
+    write("The answer was '"), write(Idx0), write("', how did you not get that?"), nl,
+    write("The attributes were: "), nl, print_list(Idx1, 0), nl, nl,
     next_game()
     .
 
 % checks if we have played all the turns, if so prints statistics.
 next_game() :-
-    games_counter(5), %%%%%%% GAME COUNT
+    games_counter(5),
     corr_answers_counter(Val),
     write("Ok that's it! Congratulations, you got "), write(Val),
     write("/5 answers right.")
@@ -118,6 +118,14 @@ incr_corr_answers_counter() :-
     retractall(corr_answers_counter(_)),
     succ(Value, Incr),
     assertz(corr_answers_counter(Incr))
+    .
+
+% HELPER FUNCTIONS
+print_list(List, Count) :-
+    nth0(Count, List, Elem),
+    write(Elem), nl(),
+    succ(Count, Incremented),
+    print_list(List, Incremented)
     .
 
 
