@@ -67,17 +67,15 @@ show_answer() :-
     .
 
 % display all attributes for your answer
-all_options() :-
+all_options(X) :-
     unique(AllOptions),
-    answer(AnsList),
-    nth0(0, AnsList, Elem),
-    (Elem==celebs -> nth0(0, AllOptions, List), print_list(List, 0)
+    (X==celebs -> nth0(0, AllOptions, List), print_list(List, 0)
      ;
-     Elem==animals -> nth0(1, AllOptions, List), print_list(List, 0)
+     X==animals -> nth0(1, AllOptions, List), print_list(List, 0)
      ;
-     Elem==sports -> nth0(2, AllOptions, List), print_list(List, 0)
+     X==sports -> nth0(2, AllOptions, List), print_list(List, 0)
      ;
-     write("Usage: all_options(X), X = {celebs, animals, sports}.")
+     write('Usage: all_options(X), X = {sports, animals, celebs}')
     )
     .
 
