@@ -2,7 +2,7 @@
 % figure out what the program is thinking about by asking
 % questions. The questions are on the format has(X) or is(Y).
 
-% program function flow
+% program flow
 %                                                  MAX 10 LOOPS
 %                                                   <---<---<--
 %                                                  |           |
@@ -66,17 +66,26 @@ show_answer() :-
     write("with attributes: "), write(Idx1)
     .
 
-% display all options, this is a prototype. It displays duplicates.
-all_options(X) :-
+% display all attributes for your answer
+all_options() :-
     unique(AllOptions),
-    (X==celebs -> nth0(0, AllOptions, CategoryOptions), print(CategoryOptions)
+    answer(AnsList),
+    nth0(0, AnsList, Elem),
+    (Elem==celebs -> nth0(0, AllOptions, List), print_list(List, 0)
      ;
-     X==animals -> nth0(1, AllOptions, CategoryOptions), print(CategoryOptions)
+     Elem==animals -> nth0(1, AllOptions, List), print_list(List, 0)
      ;
-     X==sports -> nth0(2, AllOptions, CategoryOptions), print(CategoryOptions)
+     Elem==sports -> nth0(2, AllOptions, List), print_list(List, 0)
      ;
      write("Usage: all_options(X), X = {celebs, animals, sports}.")
     )
+    .
+
+print_list(List, Count) :-
+    nth0(Count, List, Elem),
+    write(Elem), nl(),
+    succ(Count, Incremented),
+    print_list(List, Incremented)
     .
 
 

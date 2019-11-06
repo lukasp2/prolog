@@ -3,8 +3,6 @@
 answer([]) .
 :- dynamic answer/1 .
 
-
-
 % The categories contains two elements: what it is and what it has
 % What it has is contained in the sublist.
 % ex. sports = (is, [has,has,...,has])
@@ -32,11 +30,11 @@ sports(
 [
     [ tennis,     [ball, racket, net, sweat, running]],
     [ basketball, [ball, sweat, net, goal, running]],
-    [ bowling,    [ball]],
-    [ hockey,     [club, puck, net, goal, ice]],
-    [ badminton,  [ball, net]],
-    [ chess,      [mindgame]],
-    [ waterpolo,  [water, ball]],
+    [ bowling,    [ball, pins]],
+    [ hockey,     [club, puck, net, goal, ice, sweat]],
+    [ badminton,  [ball, net, racket, sweat, running]],
+    [ chess,      [board, pieces]],
+    [ waterpolo,  [water, ball, pool, net, goal]],
     [ diving,     [pool, singles, jump]]
 ]).
 
@@ -50,6 +48,6 @@ unique(
      teeth(none), diet(meat), diet(plants), diet(pills), diet(hybrid), tail, shell],
 
     [ball, racket, net, sweat, running, goal, club, puck, ice, mindgame,
-     water, pool, singles, jump]
+     water, pool, jump, pieces, board]
 ]
 ).
